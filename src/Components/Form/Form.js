@@ -1,8 +1,9 @@
 //import ReactDOM from 'react-dom/client';
 import { connect } from "react-redux";
 
-import { firstNameChanged, genderSelected } from "../../Redux/Reducers/mainReducerActions";
+import { firstNameChanged, genderSelected, emailChanged, locationSelected } from "../../Redux/Reducers/mainReducerActions";
 import { lastNameChanged } from "../../Redux/Reducers/mainReducerActions";
+
 
 
 import React from "react";
@@ -32,6 +33,14 @@ class Form extends React.Component {
 
       case 'gender' :
         this.props.dispatch(genderSelected(event.target.dataset.genderValue));
+        break;
+        
+      case 'email' :
+        this.props.dispatch(emailChanged(event.target.value));
+        break;
+
+      case 'location' :
+        this.props.dispatch(locationSelected(event.target.value));
         break;
 
       default:
@@ -81,6 +90,31 @@ class Form extends React.Component {
         />
 
         <br></br>
+
+        <label>
+          Email:
+          <input type="email" value={this.props.email} name="email" onChange={this.handleInputChange}/>
+        </label>
+
+        <br></br>
+
+        <label>
+          Location:
+          <select name="location" onChange={this.handleInputChange}>
+            <option value="">- select location -</option>
+            <option value="lahore">Lahore</option>
+            <option value="karachi">Karachi</option>
+            <option value="islamabad">Islamabad</option>
+          </select>
+        </label>
+
+        <br></br>
+
+        <label>
+          Date of Birth: 
+        </label>
+
+        <br></br>
         <input type="submit" value="Submit" />
 
       </form> 
@@ -93,7 +127,8 @@ const mapStateToProps = (state) => {
   return {
     firstName: state.firstName,
     lastName: state.lastName,
-    gender: state.gender
+    gender: state.gender,
+    email: state.email,
     }  
 }
 

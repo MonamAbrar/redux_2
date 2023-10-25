@@ -4,6 +4,9 @@ const initialState = {
   firstName: 'default',
   lastName: 'default',
   gender: '',
+  email: '',
+  location: '',
+  date: '',
 }
 
 
@@ -28,7 +31,25 @@ const mainReducer = (state, action) => {
           ...state,
           gender: action.payload.gender,
         }
+        
+      case 'email_changed':
+        return {
+          ...state,
+          email: action.payload.email,
+        }
+      
+      case 'location_selected':
+        return {
+          ...state,
+          location: action.payload.location,
+        }
 
+      case 'date_selected':
+        return {
+          ...state,
+          date: action.payload.date,
+        }
+        
       default:
         return initialState;
   }

@@ -27,3 +27,29 @@ export const genderSelected = (newValue) => {
   }
 }
 
+export const emailChanged = (newValue) => {
+  return {
+    type: "email_changed",
+    payload: {
+      email: newValue
+    }
+  }
+}
+
+export const locationSelected = (newValue) => {
+  return {
+    type: "location_selected",
+    payload: {
+      location: newValue
+    }
+  }
+}
+
+export const dateSelected = (newValue) => {
+  return {
+    type: "date_selected",
+    payload: {
+      date: newValue
+    }
+  }
+}
