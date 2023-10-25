@@ -1,7 +1,7 @@
 //import ReactDOM from 'react-dom/client';
 import { connect } from "react-redux";
 
-import { firstNameChanged, genderSelected, emailChanged, locationSelected } from "../../Redux/Reducers/mainReducerActions";
+import { firstNameChanged, genderSelected, emailChanged, locationSelected, dateSelected } from "../../Redux/Reducers/mainReducerActions";
 import { lastNameChanged } from "../../Redux/Reducers/mainReducerActions";
 
 
@@ -42,7 +42,10 @@ class Form extends React.Component {
       case 'location' :
         this.props.dispatch(locationSelected(event.target.value));
         break;
-
+      
+      case 'date' :
+        this.props.dispatch(dateSelected(event.target.value));
+        break;
       default:
         return;
 
@@ -112,6 +115,7 @@ class Form extends React.Component {
 
         <label>
           Date of Birth: 
+          <input type="date" value={this.props.date} name="date" onChange={this.handleInputChange}/>
         </label>
 
         <br></br>
@@ -129,6 +133,7 @@ const mapStateToProps = (state) => {
     lastName: state.lastName,
     gender: state.gender,
     email: state.email,
+    date: state.date,
     }  
 }
 

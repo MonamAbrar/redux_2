@@ -1,3 +1,11 @@
+
+
+0.0.6
+  - Connected date input
+  - Added date input
+  - Connected select element
+  - Added select element for location
+
 0.0.5
   - Adding Dialog Box
 
