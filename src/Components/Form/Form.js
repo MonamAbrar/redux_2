@@ -12,29 +12,35 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-    this.handleLastNameChange = this.handleLastNameChange.bind(this);
-    this.GenderMaleonClick = this.GenderMaleonClick.bind(this);
-    this.GenderFemaleonClick = this.GenderFemaleonClick.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleFirstNameChange(event) {
-    this.props.dispatch(firstNameChanged(event.target.value));
-  }
+  
+  handleInputChange(event) {
 
-  handleLastNameChange(event) {
-    this.props.dispatch(lastNameChanged(event.target.value));
-  }
+    switch(event.target.name) {
+    
+      case 'firstName' :
+        this.props.dispatch(firstNameChanged(event.target.value));
+        break;
 
-  GenderMaleonClick(event) {
-    this.props.dispatch(genderSelected('M'));
-  }
+      case 'lastName' :
+        this.props.dispatch(lastNameChanged(event.target.value));
+        break;  
 
-  GenderFemaleonClick(event) {
-    this.props.dispatch(genderSelected('F'));
-  }
+      case 'gender' :
+        this.props.dispatch(genderSelected(event.target.dataset.genderValue));
+        break;
 
+      default:
+        return;
+
+      }
+
+    }
+    
   
 
   handleSubmit(event) {
@@ -47,20 +53,32 @@ class Form extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           First name:
-          <input type="text" value={this.props.firstName} onChange={this.handleFirstNameChange}/>
+          <input type="text" value={this.props.firstName} name="firstName" onChange={this.handleInputChange}/>
         </label>
         <br></br>
         <label>
           Last name:
-          <input type="text" value={this.props.lastName} onChange={this.handleLastNameChange}/>
+          <input type="text" value={this.props.lastName} name="lastName" onChange={this.handleInputChange}/>
         </label>
 
         <br></br>
         Gender: Male:
-        <input type="radio" name="gender" checked={this.props.gender==='M'? true : false} onClick={this.GenderMaleonClick} />
+        <input
+          type="radio"
+          name="gender"
+          data-gender-value='M'
+          checked={this.props.gender==='M'? true : false}
+          onChange={this.handleInputChange}
+        />
 
         Female:
-        <input type="radio" name="gender" checked={this.props.gender==='F'? true : false} onClick={this.GenderFemaleonClick}/>
+        <input
+          type="radio"
+          name="gender"
+          data-gender-value='F'
+          checked={this.props.gender==='F'? true : false}
+          onChange={this.handleInputChange}
+        />
 
         <br></br>
         <input type="submit" value="Submit" />

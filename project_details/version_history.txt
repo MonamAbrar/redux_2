@@ -1,4 +1,7 @@
 
+0.0.4
+  - Input change handlers replaed by a single input handling function
+
 0.0.3:
   - Radios implemented, connected to redux
 
