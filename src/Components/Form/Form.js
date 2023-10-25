@@ -1,9 +1,9 @@
 //import ReactDOM from 'react-dom/client';
 import { connect } from "react-redux";
 
-import { firstNameChanged } from "../../Redux/Reducers/mainReducerActions";
+import { firstNameChanged, genderSelected } from "../../Redux/Reducers/mainReducerActions";
 import { lastNameChanged } from "../../Redux/Reducers/mainReducerActions";
-import { genderMaleClicked } from "../../Redux/Reducers/mainReducerActions";
+
 
 import React from "react";
 
@@ -14,6 +14,8 @@ class Form extends React.Component {
 
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
+    this.GenderMaleonClick = this.GenderMaleonClick.bind(this);
+    this.GenderFemaleonClick = this.GenderFemaleonClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -25,8 +27,12 @@ class Form extends React.Component {
     this.props.dispatch(lastNameChanged(event.target.value));
   }
 
-  handleGenderMaleClick(event) {
-    this.props.dispatch(genderMaleClicked(event.target.value));
+  GenderMaleonClick(event) {
+    this.props.dispatch(genderSelected('M'));
+  }
+
+  GenderFemaleonClick(event) {
+    this.props.dispatch(genderSelected('F'));
   }
 
   
@@ -48,14 +54,17 @@ class Form extends React.Component {
           Last name:
           <input type="text" value={this.props.lastName} onChange={this.handleLastNameChange}/>
         </label>
+
         <br></br>
-        <label>
-          Gender:
-          <input type="radio" value={this.props.Male} onClick={this.handleGenderMaleClick}/>
-          <input type="radio" value={this.props.Female} onClick={this.handleGenderFemaleClick}/>
-        </label>
+        Gender: Male:
+        <input type="radio" name="gender" checked={this.props.gender==='M'? true : false} onClick={this.GenderMaleonClick} />
+
+        Female:
+        <input type="radio" name="gender" checked={this.props.gender==='F'? true : false} onClick={this.GenderFemaleonClick}/>
+
         <br></br>
         <input type="submit" value="Submit" />
+
       </form> 
     );
   }
@@ -65,7 +74,8 @@ class Form extends React.Component {
 const mapStateToProps = (state) => {
   return {
     firstName: state.firstName,
-    lastName: state.lastName
+    lastName: state.lastName,
+    gender: state.gender
     }  
 }
 

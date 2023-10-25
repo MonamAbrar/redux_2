@@ -3,6 +3,7 @@
 const initialState = {
   firstName: 'default',
   lastName: 'default',
+  gender: '',
 }
 
 
@@ -22,14 +23,14 @@ const mainReducer = (state, action) => {
           lastName: action.payload.lastName,
         }
 
-      case 'genderMale_clicked':
+      case 'gender_selected':
         return {
           ...state,
-          genderMale: action.payload.genderMale,
+          gender: action.payload.gender,
         }
 
-    default:
-      return initialState;
+      default:
+        return initialState;
   }
 }
 

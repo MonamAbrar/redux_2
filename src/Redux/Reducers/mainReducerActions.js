@@ -18,11 +18,12 @@ export const lastNameChanged = (newValue) => {
   }
 }
 
-export const genderMaleClicked = (newValue) => {
+export const genderSelected = (newValue) => {
   return {
-    type: "genderMale_clicked",
+    type: "gender_selected",
     payload: {
-      genderMale: newValue
+      gender: newValue
     }
   }
 }
+

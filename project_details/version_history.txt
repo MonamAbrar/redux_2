@@ -1,3 +1,7 @@
+
+0.0.3:
+  - Radios implemented, connected to redux
+
 0.0.2:
   - Adding Radios
 
