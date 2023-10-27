@@ -10,7 +10,7 @@ const initialState = {
 }
 
 
-const mainReducer = (state, action) => {
+const formReducer = (state, action) => {
 
   switch (action.type) {
 
@@ -56,4 +56,4 @@ const mainReducer = (state, action) => {
 }
 
 
-export default mainReducer;
+export default formReducer;

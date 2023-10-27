@@ -1,8 +1,15 @@
 //import ReactDOM from 'react-dom/client';
 import { connect } from "react-redux";
 
-import { firstNameChanged, genderSelected, emailChanged, locationSelected, dateSelected } from "../../Redux/Reducers/mainReducerActions";
-import { lastNameChanged } from "../../Redux/Reducers/mainReducerActions";
+import {
+  firstNameChanged,
+  genderSelected,
+  emailChanged,
+  locationSelected,
+  dateSelected,
+  lastNameChanged
+} from "../../Redux/Actions/formReducerActions";
+
 
 
 
@@ -129,11 +136,11 @@ class Form extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    firstName: state.firstName,
-    lastName: state.lastName,
-    gender: state.gender,
-    email: state.email,
-    date: state.date,
+    firstName: state.form.firstName,
+    lastName: state.form.lastName,
+    gender: state.form.gender,
+    email: state.form.email,
+    date: state.form.date,
     }  
 }
 

@@ -11,11 +11,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
-        <Provider store={store}>
-          <MainComponent/>
-        </Provider>
-      </>
+      <Provider store={store}>
+        <MainComponent/>
+      </Provider>
+      
     );
   }
 }

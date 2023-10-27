@@ -1,4 +1,9 @@
 
+0.0.7
+  - Created store using the root reducer
+  - Used combined reducers to combine the two into single root reducer
+  - Split main reducer actions into two (form and interface)
+  - Split main reducer into two (form and interface)
 
 0.0.6
   - Connected date input
