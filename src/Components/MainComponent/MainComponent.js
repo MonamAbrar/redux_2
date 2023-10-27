@@ -9,11 +9,25 @@ import './MainComponent.css';
 
 class MainComponent extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.themeChangeHandler = this.themeChangeHandler.bind(this);
+  }
+
+  themeChangeHandler(e) {
+    this.props.dispatch(themeChanged(e.target.value));
+  }
+
   render(props) {
     return (
       <div className={`theme-${this.props.theme}`}>
         Theme:
-        <select value={this.props.theme} onChange={(e) => {this.props.dispatch(themeChanged(e.target.value))}}>
+        <select
+          value={this.props.theme}
+          name="theme"
+          // onChange={(e) => {this.props.dispatch(themeChanged(e.target.value))}}
+          onChange={(e) => {this.props.dispatch(themeChanged(e.target.value))}}
+        >
           <option value='light'>Light</option>
           <option value='dark'>Dark</option>
         </select>

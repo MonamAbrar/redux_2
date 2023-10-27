@@ -10,7 +10,7 @@ const initialState = {
 }
 
 
-const formReducer = (state, action) => {
+const formReducer = (state = initialState, action) => {
 
   switch (action.type) {
 
@@ -51,7 +51,7 @@ const formReducer = (state, action) => {
         }
         
       default:
-        return initialState;
+        return state;
   }
 }
 

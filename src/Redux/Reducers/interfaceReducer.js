@@ -5,7 +5,7 @@ const initialState = {
 }
 
 
-const interfaceReducer = (state, action) => {
+const interfaceReducer = (state = initialState, action) => {
 
   switch (action.type) {
 
@@ -16,7 +16,7 @@ const interfaceReducer = (state, action) => {
         }
         
       default:
-        return initialState;
+        return state;
   }
 }
 

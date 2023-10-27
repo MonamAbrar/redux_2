@@ -1,4 +1,8 @@
 
+
+0.0.8
+  - Bugfix in reducers - default should return state - params should have state = initialState
+
 0.0.7
   - Created store using the root reducer
   - Used combined reducers to combine the two into single root reducer
